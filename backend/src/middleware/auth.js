@@ -14,3 +14,14 @@
 // TODO: 검증 실패 시 403 응답
 
 // TODO: authMiddleware export
+
+const { auth } = require('express-oauth2-jwt-bearer');
+
+// Auth0 서버를 통해 클라이언트가 보낸 토큰이 유효한지 검증
+const authMiddleware = auth({
+  audience: process.env.AUTH0_AUDIENCE,
+  issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+  tokenSigningAlg: 'RS256'
+});
+
+module.exports = authMiddleware;

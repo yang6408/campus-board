@@ -9,3 +9,19 @@
 // - timestamps: true
 
 // TODO: mongoose.model('Post', postSchema) export
+
+const mongoose = require('mongoose');
+
+const postSchema = new mongoose.Schema({
+  board_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Board', required: true },
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  view_count: { type: Number, default: 0 },
+  like_count: { type: Number, default: 0 },
+  is_deleted: { type: Boolean, default: false }
+}, { 
+  timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } 
+});
+
+module.exports = mongoose.model('Post', postSchema);
