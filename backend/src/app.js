@@ -24,15 +24,15 @@ if (process.env.MONGO_URI) {
 }
 
 // ---------------------------------------------------
-// 🛣️ 라우터 연결 구역
+// 라우터 연결 구역
 // ---------------------------------------------------
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');     
-// const noticeRoutes = require('./routes/notices'); // 👈 동기가 완성할 때까지 주석 유지!
+// const noticeRoutes = require('./routes/notices'); // 
 
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);     
-// app.use('/api/notices', noticeRoutes); // 👈 여기도 주석 유지!
+// app.use('/api/notices', noticeRoutes); //
 
 // 크롤러 스케줄러 (에러 방지용 방어막)
 try {
@@ -43,7 +43,7 @@ try {
 }
 
 // ---------------------------------------------------
-// 🚨 에러 처리 구역
+//  에러 처리 구역
 // ---------------------------------------------------
 // 404 핸들러
 app.use((req, res) => {
