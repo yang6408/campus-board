@@ -13,3 +13,36 @@
 // TODO: JWT 발급 후 응답
 
 // TODO: router export
+
+const express = require('express');
+const router = express.Router();
+
+// 아까 만든 문지기(middleware)와 유저(User) 모델을 데려옴
+const authMiddleware = require('../middleware/auth');
+const User = require('../models/User');
+
+// POST /api/auth/sync
+router.post('/sync', authMiddleware, async (req, res) => {
+  try {
+    const auth0_id = req.user.sub;
+    let user = await User.findOne({ auth0_id: auth0_id });
+
+    if (!user) {
+      // 내 DB에 없으면 새로 가입
+      user = new User({ auth0_id: auth0_id });
+      await user.save();
+      console.log('✅ [Sync] 새로운 유저 DB 등록 완료!');
+      return res.status(201).json({ message: '회원가입 및 동기화 완료', user });
+    }
+
+    // 이미 가입되어 있으면 통과
+    console.log('✅ [Sync] 기존 유저 동기화 완료!');
+    res.status(200).json({ message: '동기화 완료', user });
+
+  } catch (error) {
+    console.error('🔥 [Sync] 에러 발생:', error.message);
+    res.status(500).json({ message: '동기화 중 서버 에러가 발생했습니다.', error: error.message });
+  }
+});
+
+module.exports = router;
