@@ -28,11 +28,11 @@ if (process.env.MONGO_URI) {
 // ---------------------------------------------------
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');     
-// const noticeRoutes = require('./routes/notices'); // 
+const noticeRoutes = require('./routes/notices');
 
 app.use('/api/auth', authRoutes);
-app.use('/api/posts', postRoutes);     
-// app.use('/api/notices', noticeRoutes); //
+app.use('/api/posts', postRoutes);
+app.use('/api/notices', noticeRoutes);
 
 // 크롤러 스케줄러 (에러 방지용 방어막)
 try {
