@@ -27,12 +27,15 @@ if (process.env.MONGO_URI) {
 // 라우터 연결 구역
 // ---------------------------------------------------
 const authRoutes = require('./routes/auth');
-const postRoutes = require('./routes/posts');     
+const postRoutes = require('./routes/posts');
+const notificationRoutes = require('./routes/notifications');
 const noticeRoutes = require('./routes/notices');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/notifications', notificationRoutes);
 app.use('/api/notices', noticeRoutes);
+
 
 // 크롤러 스케줄러 (에러 방지용 방어막)
 try {
