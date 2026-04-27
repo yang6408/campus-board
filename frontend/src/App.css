@@ -1,0 +1,33 @@
+:root {
+  --orange-main: #ff6b00;
+  --orange-light: #fff5ed;
+  --gray-text: #666;
+  --gray-border: #e2e2e2;
+  --bg-color: #ffffff;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #333;
+}
+
+* { box-sizing: border-box; }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex: 1;
+}
+
+.navLinks a, .mobileMenuLinks a, .footer-links a {
+  text-decoration: none;
+  color: inherit; /* 부모 요소의 색상을 그대로 따름 */
+}
+

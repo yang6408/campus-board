@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import './Announce.css';
 import announceLogo from '../assets/announce.png';
-import communityLogo from '../assets/community.png';
 
 const BoardCard = ({ title, icon, isLarge }) => {
   return (
@@ -23,22 +23,12 @@ const Home = () => {
 
   return (
     <main className="main-container">
-      <div className="grid-layout">
+      <div className="announce-grid-layout">
         <BoardCard 
           title="공지사항" 
-          icon={announceLogo}          
+          icon={announceLogo}
           isLarge={true}
         />
-        <div className="side-boards">
-          <BoardCard 
-            title="전공 게시판"
-            icon={communityLogo}          
-          />
-          <BoardCard 
-            title="학년 게시판" 
-            icon={communityLogo}          
-          />
-        </div>
       </div>
     </main>
   );
