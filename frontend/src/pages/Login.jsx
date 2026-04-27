@@ -1,12 +1,24 @@
-// TODO: login API, useNavigate import
+import React from 'react';
+import './Login.css';
+import logImg from '../assets/logimg.jpg';
+import donggukLogo from '../assets/logo.png';
 
-// 로그인 페이지
-// TODO: 이메일, 비밀번호 상태 관리 (useState)
-// TODO: 로그인 핸들러 — login() 호출, 성공 시 token을 localStorage에 저장 후 홈으로 이동
+const LoginPage = () => (
+  <div className="loginContainer">
+    <div className="whiteBox">
+      <div className="leftImage">
+        <img src={logImg} alt="로그인 이미지" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+      <div className="rightForm">
+        <img src={donggukLogo} alt="로고 이미지" style={{ width: '300px' }} />
+        <h1>역사를 걸으면 동국이 보이고<br />동국이 걸으면 역사가 된다.</h1>
+        <input type="text" placeholder="아이디" />
+        <input type="password" placeholder="비밀번호" />
+        <button className="btnPrimary">로그인</button>
+        <button className="btnGoogle">회원가입</button>
+      </div>
+    </div>
+  </div>
+);
 
-// TODO: 이메일 입력 렌더링
-// TODO: 비밀번호 입력 렌더링
-// TODO: 로그인 버튼 렌더링
-// TODO: 회원가입 링크 렌더링
-
-// TODO: Login export default
+export default LoginPage;

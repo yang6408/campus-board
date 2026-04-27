@@ -1,14 +1,47 @@
-// TODO: react-router-dom (BrowserRouter, Routes, Route) import
-// TODO: 페이지 컴포넌트 (Home, Board, Login) import
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home'; 
+import Login from './pages/Login';
+import Mypage from './pages/Mypage';
+import Announce from './pages/Announce';
+import AnnDetail from './pages/Announcedetail';
+import Majorcommunity from './pages/Majorcommunity';
+import MajDetail from './pages/Majordetail';
+import Gradecommunity from './pages/Gradecommunity';
+import GraDetail from './pages/Gradedetail';
+import './App.css';
 
-// TODO: 네비게이션 바 컴포넌트 추가
+function AppContent() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
 
-// TODO: BrowserRouter > Routes 구조로 라우트 설정
-// - '/'       → Home
-// - '/board'  → Board
-// - '/login'  → Login
-// - 게시글 상세, 마이페이지 라우트 추가
+  return (
+    <div className="App">
+      {!isLoginPage && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/announce" element={<Announce />} />
+        <Route path="/anndetail" element={<AnnDetail />} />
+        <Route path="/majorcommunity" element={<Majorcommunity />} />
+        <Route path="/majdetail" element={<MajDetail />} />
+        <Route path="/gradecommunity" element={<Gradecommunity />} />
+        <Route path="/gradetail" element={<GraDetail />} />
+      </Routes>
+      {!isLoginPage && <Footer />}
+    </div>
+  );
+}
 
-// TODO: PrivateRoute (로그인 보호 라우트) 구현
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
 
-// TODO: App export default
+export default App;
